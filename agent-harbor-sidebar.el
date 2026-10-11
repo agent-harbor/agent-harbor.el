@@ -60,8 +60,9 @@
 (defvar agent-harbor-sidebar--task-branches (make-hash-table :test #'equal))
 (defvar agent-harbor-sidebar--all-branches nil
   "Cached full daemon branch list (every branch, not just the focused task's).
-Used to normalize a cross-task `agentharborfs://branches/<name>/...' preview URI to
-its canonical `agentharborfs://<id>/...' form without a render-time REST call.")
+Used to normalize a cross-task `agentharborfs://branches/<name>/...'
+preview URI to its canonical `agentharborfs://<id>/...' form without a
+render-time REST call.")
 (defvar agent-harbor-sidebar--full-sessions (make-hash-table :test #'equal))
 (defvar agent-harbor-sidebar--session-events (make-hash-table :test #'equal))
 (defvar agent-harbor-sidebar--session-history-counts (make-hash-table :test #'equal))
@@ -498,7 +499,8 @@ this can run during render without a REST round-trip."
 (defun agent-harbor-sidebar--normalize-agentharborfs-uri (uri)
   "Rewrite an agentharborfs branch-name URI to its canonical branch-id form.
 A timeline card's text may reference a branch by NAME
-\(agentharborfs://branches/<name>/...), e.g. a cross-task preview of another task's
+\(agentharborfs://branches/<name>/...), e.g. a cross-task preview of
+another task's
 branch.  Previews are keyed by branch id, so resolve <name> to its id via the
 cached branch list and rebuild the URI.  Returns URI unchanged when the branch
 is already an id or cannot be resolved yet."
@@ -866,12 +868,14 @@ task records."
          (agent-harbor-sidebar--deep-refresh-sessions task-id sessions))))))
 
 (defun agent-harbor-sidebar--preview-refresh-task (task-id)
-  "Asynchronously load just enough of non-focused TASK-ID for cross-task previews.
+  "Asynchronously load a non-focused TASK-ID for cross-task previews.
 
-A focused task can preview another task's branch through the agentharborfs scheme
+A focused task can preview another task's branch through the
+agentharborfs scheme
 \(see `agent-harbor-cross-task-files').  `agent-harbor-sidebar--timeline-cards'
 surfaces such a foreign task's preview-bearing cards (an `edited' card resolves
-to `agentharborfs://<branch-id>/<path>') into the focused timeline, but only once that
+to `agentharborfs://<branch-id>/<path>') into the focused timeline, but
+only once that
 task's session ids and per-session history have been pulled into the local
 store.  The focused-only `agent-harbor-sidebar--deep-refresh-task' never touches
 non-focused rows, so without this pass the cross-task preview card never

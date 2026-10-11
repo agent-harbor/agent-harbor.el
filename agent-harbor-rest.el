@@ -118,7 +118,8 @@ for the broader policy on workspace-load-sensitive deadlines."
     (error body)))
 
 (defun agent-harbor-rest--curl-json (method url &optional body extra-headers)
-  "Fetch URL as JSON through curl using METHOD, optional JSON BODY, and EXTRA-HEADERS."
+  "Fetch URL as JSON through curl.
+Uses METHOD, an optional JSON BODY, and EXTRA-HEADERS."
   (let* ((buffer (generate-new-buffer " *agent-harbor-curl*"))
          (args `("--noproxy" "*" "--fail-with-body" "--silent" "--show-error" "--location"
                  "--max-time" ,(number-to-string agent-harbor-rest-timeout)
@@ -147,7 +148,8 @@ for the broader policy on workspace-load-sensitive deadlines."
         (kill-buffer buffer)))))
 
 (defun agent-harbor-rest--url-json (method url &optional body extra-headers)
-  "Fetch URL as JSON through url.el using METHOD, optional JSON BODY, and EXTRA-HEADERS."
+  "Fetch URL as JSON through url.el.
+Uses METHOD, an optional JSON BODY, and EXTRA-HEADERS."
   (let ((url-request-method method)
         (url-request-extra-headers
          (append '(("Accept" . "application/json"))
@@ -171,7 +173,8 @@ for the broader policy on workspace-load-sensitive deadlines."
         (kill-buffer buffer)))))
 
 (defun agent-harbor-rest--plz-json (method url &optional body extra-headers)
-  "Fetch URL as JSON through plz.el using METHOD, optional JSON BODY, and EXTRA-HEADERS."
+  "Fetch URL as JSON through plz.el.
+Uses METHOD, an optional JSON BODY, and EXTRA-HEADERS."
   (unless (require 'plz nil t)
     (signal 'agent-harbor-rest-error '("plz is unavailable")))
   (plz (intern (downcase method)) url
@@ -185,7 +188,8 @@ for the broader policy on workspace-load-sensitive deadlines."
     :timeout agent-harbor-rest-timeout))
 
 (defun agent-harbor-rest--json-once (method url &optional body extra-headers)
-  "Fetch URL once using METHOD, optional BODY, and EXTRA-HEADERS with the best backend."
+  "Fetch URL once through the best available backend.
+Uses METHOD, an optional BODY, and EXTRA-HEADERS."
   (cond
    ((require 'plz nil t) (agent-harbor-rest--plz-json method url body extra-headers))
    ((executable-find "curl") (agent-harbor-rest--curl-json method url body extra-headers))
@@ -211,7 +215,8 @@ for the broader policy on workspace-load-sensitive deadlines."
   (agent-harbor-rest-json-request "GET" url nil retry-delays))
 
 (defun agent-harbor-rest--plz-get-json-async (url callback error-callback)
-  "Asynchronously GET URL as JSON through plz, dispatching to CALLBACK or ERROR-CALLBACK.
+  "Asynchronously GET URL as JSON through plz.
+Dispatches to CALLBACK or ERROR-CALLBACK.
 Returns the plz process object so callers can track it as in-flight."
   (plz 'get url
     :as (lambda ()
@@ -228,7 +233,8 @@ Returns the plz process object so callers can track it as in-flight."
                          (error-message-string err)))))))
 
 (defun agent-harbor-rest--curl-get-json-async (url callback error-callback)
-  "Asynchronously GET URL as JSON through curl, dispatching to CALLBACK or ERROR-CALLBACK.
+  "Asynchronously GET URL as JSON through curl.
+Dispatches to CALLBACK or ERROR-CALLBACK.
 Returns the curl process object so callers can track it as in-flight."
   (let* ((buffer (generate-new-buffer " *agent-harbor-curl-async*"))
          (args `("--noproxy" "*" "--fail-with-body" "--silent" "--show-error" "--location"
@@ -264,7 +270,8 @@ Returns the curl process object so callers can track it as in-flight."
     process))
 
 (defun agent-harbor-rest--url-get-json-async (url callback error-callback)
-  "Asynchronously GET URL as JSON through url.el, dispatching to CALLBACK or ERROR-CALLBACK.
+  "Asynchronously GET URL as JSON through url.el.
+Dispatches to CALLBACK or ERROR-CALLBACK.
 Returns nil; url.el manages its own retrieval buffer/process internally."
   (let ((url-request-method "GET")
         (url-request-extra-headers '(("Accept" . "application/json")))
@@ -316,7 +323,8 @@ request was actually launched, not to block on it."
   (encode-coding-string (buffer-substring-no-properties (point) (point-max)) 'binary))
 
 (defun agent-harbor-rest--url-bytes (method url &optional body content-type extra-headers)
-  "Fetch URL as raw bytes through url.el using METHOD, BODY, CONTENT-TYPE, and EXTRA-HEADERS."
+  "Fetch URL as raw bytes through url.el.
+Uses METHOD, BODY, CONTENT-TYPE, and EXTRA-HEADERS."
   (let ((url-request-method method)
         (url-request-extra-headers
          (append '(("Accept" . "application/octet-stream"))
@@ -340,7 +348,8 @@ request was actually launched, not to block on it."
         (kill-buffer buffer)))))
 
 (defun agent-harbor-rest-bytes-request (method url &optional body content-type extra-headers)
-  "Request URL as raw bytes with METHOD, optional BODY, CONTENT-TYPE, and EXTRA-HEADERS."
+  "Request URL as raw bytes.
+Uses METHOD, an optional BODY, CONTENT-TYPE, and EXTRA-HEADERS."
   (agent-harbor-rest--url-bytes method url body content-type extra-headers))
 
 (defun agent-harbor-rest--base-url (base-url)

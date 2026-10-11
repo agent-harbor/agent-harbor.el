@@ -49,6 +49,15 @@
   :type 'integer
   :group 'agent-harbor-task-prompt)
 
+;; Autoloaded because the `auto-mode-alist' entry below is, and an autoload
+;; form is copied verbatim into the generated autoloads file and evaluated
+;; before this file is loaded.  Without this cookie that entry raised
+;; "Error loading autoloads: (void-variable
+;; agent-harbor-task-prompt-file-regexp)" on every start of a session where the
+;; package was installed, because the variable did not exist yet.  Autoloading
+;; the definition keeps one copy of the regexp instead of duplicating the
+;; literal into the alist entry.
+;;;###autoload
 (defconst agent-harbor-task-prompt-file-regexp
   (concat "\\(?:\\`\\|/\\)ah-"
           "\\(?:\\(task\\)-prompt-[0-9]+-[^/]+\\.ahtask"
