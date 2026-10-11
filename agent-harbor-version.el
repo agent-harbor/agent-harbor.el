@@ -78,13 +78,19 @@ old\"."
 
 (defun agent-harbor-version-ah-satisfied-p (reported)
   "Does REPORTED satisfy `agent-harbor-ah-minimum-version'?
-Return t, nil, or the symbol `unknown' when REPORTED carries no version
-number to compare."
+
+Return t, nil, the symbol `unknown' when REPORTED carries no version number
+to compare, or the symbol `development' when REPORTED is a development build
+below the floor.  A build from a branch carries the version of the last
+release behind it -- \"ah 0.6.5-dev\" can be a build of a tree that has
+everything 0.6.8 has -- so its number says nothing about which surfaces it
+provides, and calling it too old would be a guess dressed up as a verdict."
   (let ((got (agent-harbor-version-parse reported))
         (want (agent-harbor-version-parse agent-harbor-ah-minimum-version)))
     (cond
      ((not (and got want)) 'unknown)
      ((>= (agent-harbor-version-compare got want) 0) t)
+     ((string-match-p "-\\(dev\\|rc\\)" reported) 'development)
      (t nil))))
 
 (defun agent-harbor-version--ah-reported (executable)
@@ -133,6 +139,10 @@ and the daemon connection state."
         (pcase (agent-harbor-version-ah-satisfied-p reported)
           ('unknown
            (push (format "warn  no version number in %S; needs ah %s or newer"
+                         reported agent-harbor-ah-minimum-version)
+                 lines))
+          ('development
+           (push (format "warn  %s is a development build, below the required ah %s; its number cannot say whether it has what this package calls"
                          reported agent-harbor-ah-minimum-version)
                  lines))
           ('nil
