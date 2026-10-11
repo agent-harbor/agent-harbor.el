@@ -1,0 +1,20 @@
+#+title: Agent Harbor layer
+
+* Description
+
+This Spacemacs layer installs and configures the =agent-harbor= Emacs package. It exposes the =agent-harbor= command on =SPC o h=.
+
+* Install
+
+Copy this layer to =~/.emacs.d/private/agent-harbor= or another directory listed in =dotspacemacs-configuration-layer-path=.
+
+Add =agent-harbor= to =dotspacemacs-configuration-layers= in =~/.spacemacs=:
+
+#+begin_src emacs-lisp
+(setq-default dotspacemacs-configuration-layers
+              '(agent-harbor))
+#+end_src
+
+If the layer is not under =~/.emacs.d/private=, add the parent directory to =dotspacemacs-configuration-layer-path=.
+
+Until the MELPA recipe is accepted, install the package with =ah editor install emacs --method direct-clone= or add a local package recipe.

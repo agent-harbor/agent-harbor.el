@@ -1,0 +1,29 @@
+#+title:    :tools agent-harbor
+#+subtitle: Agent Harbor editor integration
+
+* Description
+
+This Doom module installs and configures the =agent-harbor= Emacs package. It exposes the =agent-harbor= command and binds it to =SPC o h=.
+
+* Prerequisites
+
+- GNU Emacs 29.1 or newer.
+- Agent Harbor's =ah= executable on =exec-path= when daemon auto-start is enabled.
+- MELPA configured as a Doom package archive once the MELPA recipe is accepted upstream.
+
+* Install
+
+Copy this module to =$DOOMDIR/modules/tools/agent-harbor= and enable it in =$DOOMDIR/init.el=:
+
+#+begin_src emacs-lisp
+(doom! :tools
+       agent-harbor)
+#+end_src
+
+Run:
+
+#+begin_src sh
+doom sync
+#+end_src
+
+Until the MELPA recipe is accepted, users can pin a local recipe in =$DOOMDIR/packages.el= or use =ah editor install emacs --method direct-clone=.
