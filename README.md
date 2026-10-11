@@ -8,7 +8,7 @@ that: it talks to the local `ah` daemon over its REST and SSE endpoints, so
 tasks can be started, watched, replied to and reviewed without leaving Emacs.
 
 **Version 0.6.8**, published from [`ide-plugins/emacs`][source] at
-[`2465c25216ac`][commit] in the Agent Harbor monorepo. This repository is
+[`ed781cfefad4`][commit] in the Agent Harbor monorepo. This repository is
 generated — see [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull
 request.
 
@@ -151,4 +151,4 @@ each other is the supported configuration.
 AGPL-3.0-only. See [LICENSE](LICENSE).
 
 [source]: https://github.com/agent-harbor/agent-harbor/tree/main/ide-plugins/emacs
-[commit]: https://github.com/agent-harbor/agent-harbor/commit/2465c25216acb9d8ef3be4d53f11bdce9663c1e7
+[commit]: https://github.com/agent-harbor/agent-harbor/commit/ed781cfefad48de3d9cf77f7fb59debd33951bd6

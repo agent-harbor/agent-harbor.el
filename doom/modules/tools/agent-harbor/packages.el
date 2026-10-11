@@ -1,4 +1,4 @@
-;;; tools/agent-harbor/packages.el -*- no-byte-compile: t; -*-
+;;; tools/agent-harbor/packages.el -*- lexical-binding: t; no-byte-compile: t; -*-
 
 ;; Copyright 2026 Schelling Point Labs Inc
 ;; SPDX-License-Identifier: AGPL-3.0-only

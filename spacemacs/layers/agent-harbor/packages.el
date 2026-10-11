@@ -1,4 +1,4 @@
-;;; packages.el --- Agent Harbor layer packages file for Spacemacs. -*- lexical-binding: t; -*-
+;;; packages.el --- Agent Harbor layer packages file for Spacemacs. -*- lexical-binding: t; no-byte-compile: t; -*-
 
 ;; Copyright 2026 Schelling Point Labs Inc
 ;; SPDX-License-Identifier: AGPL-3.0-only
