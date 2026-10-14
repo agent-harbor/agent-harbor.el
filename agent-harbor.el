@@ -3,7 +3,7 @@
 ;; Copyright 2026 Schelling Point Labs Inc
 ;; SPDX-License-Identifier: AGPL-3.0-only
 
-;; Version: 0.6.8
+;; Version: 0.6.9
 ;; Package-Requires: ((emacs "29.1"))
 ;; URL: https://github.com/agent-harbor/agent-harbor
 ;; Keywords: tools, ai, convenience
