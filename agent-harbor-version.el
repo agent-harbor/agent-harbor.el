@@ -25,7 +25,7 @@
 ;; would drag in the REST and SSE stack before the doctor can report anything.
 (declare-function agent-harbor-daemon-status "agent-harbor-daemon" ())
 
-(defconst agent-harbor-version "0.6.9"
+(defconst agent-harbor-version "0.6.11"
   "Version of this Agent Harbor package.
 
 A placeholder in the monorepo, kept in step with the `Version:\' header of
