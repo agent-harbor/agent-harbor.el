@@ -7,8 +7,8 @@ workspaces and records every session. This package is the editor half of
 that: it talks to the local `ah` daemon over its REST and SSE endpoints, so
 tasks can be started, watched, replied to and reviewed without leaving Emacs.
 
-**Version 0.6.15**, published from [`ide-plugins/emacs`][source] at
-[`da8adfabd23e`][commit] in the Agent Harbor monorepo. This repository is
+**Version 0.6.17**, published from [`ide-plugins/emacs`][source] at
+[`e02ab8096523`][commit] in the Agent Harbor monorepo. This repository is
 generated — see [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull
 request.
 
@@ -139,8 +139,8 @@ Include its output in any bug report.
 
 ## Versioning
 
-Releases track the `ah` binary: package 0.6.15 is published from the same
-monorepo tag as `ah` 0.6.15. The two are installed separately, though, so
+Releases track the `ah` binary: package 0.6.17 is published from the same
+monorepo tag as `ah` 0.6.17. The two are installed separately, though, so
 the package declares the oldest `ah` it works with
 (`agent-harbor-ah-minimum-version`, currently **0.6.8**) and
 `agent-harbor-doctor` reports a mismatch. Keeping the two within a release of
@@ -151,4 +151,4 @@ each other is the supported configuration.
 AGPL-3.0-only. See [LICENSE](LICENSE).
 
 [source]: https://github.com/agent-harbor/agent-harbor/tree/main/ide-plugins/emacs
-[commit]: https://github.com/agent-harbor/agent-harbor/commit/da8adfabd23e5448b5b10e080c3736851756e6f7
+[commit]: https://github.com/agent-harbor/agent-harbor/commit/e02ab8096523cf54522ad1eef0ae57152c09247b
